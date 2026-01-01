@@ -1,6 +1,8 @@
 defmodule BlogWeb.Router do
   use BlogWeb, :router
 
+  alias BlogWeb.SigninLive
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -33,6 +35,12 @@ defmodule BlogWeb.Router do
     # you can use Plug.BasicAuth to set up some basic authentication
     # as long as you are also using SSL (which you should anyway).
     import Phoenix.LiveDashboard.Router
+
+    scope "/" do
+      pipe_through :browser
+
+      live "/signin", SigninLive
+    end
 
     scope "/dev" do
       pipe_through :browser
