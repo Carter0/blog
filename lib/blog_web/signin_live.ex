@@ -3,7 +3,7 @@ defmodule BlogWeb.SigninLive do
 
   def render(assigns) do
     ~H"""
-    Sign in page
+    Sign in page <.input field={@form[:email]} type="email" />
     """
   end
 end
